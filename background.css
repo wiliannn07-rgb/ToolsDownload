@@ -1,0 +1,88 @@
+/* ========================================================
+   BACKGROUND GALAXY PARTICLES & AMBIENT NEBULA GLOW
+======================================================== */
+
+body {
+  background-color: #030107;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Layer Tempat Canvas & Nebula Dinamis */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 70%, #0d041a 0%, #020005 100%);
+}
+
+/* Awan Nebula Kosmik Melayang 1 (Atas Kiri) */
+.bg-layer::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -20%;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.22) 0%, rgba(168, 85, 247, 0.08) 45%, transparent 75%);
+  filter: blur(45px);
+  animation: floatNebulaA 16s ease-in-out infinite alternate;
+}
+
+/* Awan Nebula Kosmik Melayang 2 (Bawah Kanan) */
+.bg-layer::after {
+  content: '';
+  position: absolute;
+  bottom: 5%;
+  right: -25%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.18) 0%, rgba(76, 29, 149, 0.12) 50%, transparent 75%);
+  filter: blur(55px);
+  animation: floatNebulaB 20s ease-in-out infinite alternate;
+}
+
+#galaxyCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes floatNebulaA {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(60px, 40px) scale(1.15);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-30px, 80px) scale(0.95);
+    opacity: 0.6;
+  }
+}
+
+@keyframes floatNebulaB {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50px, -60px) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(30px, -40px) scale(1);
+    opacity: 0.5;
+  }
+}
